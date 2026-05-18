@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"> <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:paddingHorizontal="20dp">
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_centerVertical="true"
+        android:src="@android:drawable/ic_menu_revert"
+        app:tint="#1a73e8"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Forum Diskusi"
+        android:textColor="#1a73e8"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/btnAddForum"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@android:drawable/ic_input_add"
+        app:tint="#1a73e8"/>
+</RelativeLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutForum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        app:tabIndicatorColor="#1a73e8"
+        app:tabIndicatorHeight="3dp"
+        app:tabSelectedTextColor="#1a73e8"
+        app:tabTextColor="#5F6368"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Small">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semua" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum Dibaca" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Saya" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#F1F3F4"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvForum"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingTop="8dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aplikasi By - Abid FJ"
+        android:textAlignment="center"
+        android:textColor="#B0BEC5"
+        android:textSize="12sp"
+        android:textStyle="italic|bold"
+        android:paddingBottom="16dp"
+        android:paddingTop="8dp"
+        android:background="@android:color/white"/>
+
+</LinearLayout>

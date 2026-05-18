@@ -21,6 +21,14 @@
             android:exported="false"/>
 
         <activity
+            android:name=".ForumActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".DetailForumActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".LandingActivity"
             android:exported="true">
 
