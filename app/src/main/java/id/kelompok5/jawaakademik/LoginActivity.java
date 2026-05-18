@@ -39,11 +39,12 @@ public class LoginActivity extends AppCompatActivity {
             if (password.equals("12345")) {
                 Toast.makeText(LoginActivity.this, "Login berhasil", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                 intent.putExtra("NIM", nim);
                 startActivity(intent);
+
                 finish();
-            } else {
+            }else {
                 Toast.makeText(LoginActivity.this, "Password salah", Toast.LENGTH_SHORT).show();
             }
         });
