@@ -27,17 +27,14 @@ public class ForumActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forum);
 
-
         ImageView btnBack = findViewById(R.id.btnBack);
         ImageView btnAddForum = findViewById(R.id.btnAddForum);
         rvForum = findViewById(R.id.rvForum);
-
 
         btnBack.setOnClickListener(v -> finish());
         btnAddForum.setOnClickListener(v ->
                 Toast.makeText(this, "Fitur Tambah Diskusi Segera Hadir!", Toast.LENGTH_SHORT).show()
         );
-
 
         listDiskusi = new ArrayList<>();
         listDiskusi.add(new Diskusi("Pertanyaan seputar RecyclerView di Android", "Andi Saputra", "2 jam lalu", "3"));
@@ -45,12 +42,43 @@ public class ForumActivity extends AppCompatActivity {
         listDiskusi.add(new Diskusi("Rekomendasi Library Android Terbaik", "Dimas Pratama", "1 hari lalu", "5"));
         listDiskusi.add(new Diskusi("Kesulitan memahami Retrofit", "Rina Kartika", "2 hari lalu", "2"));
 
-
         rvForum.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ForumAdapter(listDiskusi);
         rvForum.setAdapter(adapter);
-    }
 
+        // ==============================================
+        // LOGIKA BOTTOM NAVIGATION
+        // ==============================================
+        com.google.android.material.bottomnavigation.BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
+
+        // Tandai tombol "Forum" sebagai menu yang sedang aktif di halaman ini
+        if (bottomNav != null) {
+            bottomNav.setSelectedItemId(R.id.navigation_forum);
+
+            bottomNav.setOnItemSelectedListener(item -> {
+                int itemId = item.getItemId();
+
+                if (itemId == R.id.navigation_beranda) {
+                    // Pindah ke halaman Beranda
+                    startActivity(new android.content.Intent(getApplicationContext(), DashboardActivity.class));
+                    overridePendingTransition(0, 0); // Menghilangkan animasi kedip saat pindah
+                    finish();
+                    return true;
+                } else if (itemId == R.id.navigation_kelas) {
+                    // Nanti arahkan ke Activity Daftar Kelas (Mata Pelajaran)
+                    return true;
+                } else if (itemId == R.id.navigation_forum) {
+                    // Tetap di halaman forum
+                    return true;
+                } else if (itemId == R.id.navigation_profil) {
+                    // Nanti arahkan ke Activity Profil
+                    return true;
+                }
+                return false;
+            });
+        }
+        // ==============================================
+    }
 
     private static class Diskusi {
         String judul, penulis, waktu, jmlBalasan;
@@ -83,7 +111,6 @@ public class ForumActivity extends AppCompatActivity {
             holder.tvJudulForum.setText(diskusi.judul);
             holder.tvInfoForum.setText(diskusi.penulis + " • " + diskusi.waktu);
             holder.tvJmlBalasan.setText(diskusi.jmlBalasan);
-
 
             holder.itemView.setOnClickListener(v -> {
                 android.content.Intent intent = new android.content.Intent(ForumActivity.this, DetailForumActivity.class);

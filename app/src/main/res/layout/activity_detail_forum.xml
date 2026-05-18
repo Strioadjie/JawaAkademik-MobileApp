@@ -83,14 +83,6 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Aplikasi By - Abid FJ"
-        android:textAlignment="center"
-        android:textColor="#B0BEC5"
-        android:textSize="12sp"
-        android:textStyle="italic|bold"
-        android:padding="12dp" />
+
 
 </LinearLayout>

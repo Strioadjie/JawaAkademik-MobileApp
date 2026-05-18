@@ -27,6 +27,15 @@
             android:name=".ForumActivity"
             android:exported="false" />
         <activity
+            android:name=".MateriActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AbsensiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VideoActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetailForumActivity"
             android:exported="false" />
         <activity
