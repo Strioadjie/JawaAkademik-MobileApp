@@ -80,7 +80,7 @@ public class LandingActivity extends AppCompatActivity {
 
     private void bukaEmailAdmin() {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:sofyanagung54321@gmail.com"));
+        intent.setData(Uri.parse("mailto         :sofyanagung54321@gmail.com"));
         intent.putExtra(Intent.EXTRA_SUBJECT, "Pendaftaran Akun Jawa Akademik");
         intent.putExtra(Intent.EXTRA_TEXT, "Halo Admin Jawa, saya ingin membuat akun Jawa Akademik.");
 
