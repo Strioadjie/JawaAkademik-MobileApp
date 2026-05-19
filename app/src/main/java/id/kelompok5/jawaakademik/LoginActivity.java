@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +15,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText edtNim, edtPassword;
     Button btnLogin;
+    CheckBox cbRemember;
     TextView tvHubungiAdminJawa;
 
     @Override
@@ -25,11 +26,24 @@ public class LoginActivity extends AppCompatActivity {
         edtNim = findViewById(R.id.edtNim);
         edtPassword = findViewById(R.id.edtPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        cbRemember = findViewById(R.id.cbRemember);
         tvHubungiAdminJawa = findViewById(R.id.tvHubungiAdminJawa);
+
+        btnLogin.setEnabled(false);
+        btnLogin.setAlpha(0.55f);
+        cbRemember.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            btnLogin.setEnabled(isChecked);
+            btnLogin.setAlpha(isChecked ? 1f : 0.55f);
+        });
 
         btnLogin.setOnClickListener(v -> {
             String username = edtNim.getText().toString().trim();
             String password = edtPassword.getText().toString().trim();
+
+            if (!cbRemember.isChecked()) {
+                AppToast.show(LoginActivity.this, "Centang Ingat saya dulu");
+                return;
+            }
 
             if (username.isEmpty()) {
                 edtNim.setError("USERNAME wajib diisi");
@@ -42,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             if (password.equals("12345")) {
-                Toast.makeText(LoginActivity.this, "Login berhasil", Toast.LENGTH_SHORT).show();
+                AppToast.show(LoginActivity.this, "Login berhasil");
 
                 // Simpan username agar tidak hilang saat pindah menu
                 getSharedPreferences("USER_DATA", MODE_PRIVATE)
@@ -55,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 finish();
             } else {
-                Toast.makeText(LoginActivity.this, "Password salah", Toast.LENGTH_SHORT).show();
+                AppToast.show(LoginActivity.this, "Password salah");
             }
         });
 
@@ -68,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
             try {
                 startActivity(Intent.createChooser(intent, "Kirim email menggunakan"));
             } catch (ActivityNotFoundException e) {
-                Toast.makeText(this, "Tidak ada aplikasi email yang tersedia", Toast.LENGTH_SHORT).show();
+                AppToast.show(this, "Tidak ada aplikasi email");
             }
         });
     }

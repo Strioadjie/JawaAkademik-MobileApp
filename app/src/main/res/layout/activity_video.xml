@@ -110,4 +110,6 @@
         android:textAllCaps="false"
         android:textColor="@color/white" />
 
+    <include layout="@layout/layout_copyright" />
+
 </LinearLayout>

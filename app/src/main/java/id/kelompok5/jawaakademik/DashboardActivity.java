@@ -63,17 +63,10 @@ public class DashboardActivity extends AppCompatActivity {
                     // SEKARANG SUDAH BISA KE LAYAR 7 (MATERI)
                     startActivity(new Intent(getApplicationContext(), MateriActivity.class));
                     overridePendingTransition(0, 0);
-                    finish();
-                    return true;
-                } else if (itemId == R.id.navigation_forum) {
-                    startActivity(new Intent(getApplicationContext(), ForumActivity.class));
-                    overridePendingTransition(0, 0);
-                    finish();
                     return true;
                 } else if (itemId == R.id.navigation_profil) {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                     overridePendingTransition(0, 0);
-                    finish();
                     return true;
                 }
                 return false;
@@ -84,13 +77,13 @@ public class DashboardActivity extends AppCompatActivity {
 
     private void siapkanDataMataPelajaran() {
         listMataPelajaran = new ArrayList<>();
-        listMataPelajaran.add(new MataPelajaran("Pemrograman Mobile", "Android, Activity, UI XML", "Bangun aplikasi Android dari layout, intent, list, hingga navigasi.", R.drawable.img_mobile));
-        listMataPelajaran.add(new MataPelajaran("Dasar Pemrograman", "Algoritma, Java, OOP", "Mulai dari logika dasar, struktur data sederhana, dan konsep OOP.", R.drawable.image_student));
-        listMataPelajaran.add(new MataPelajaran("Website Development", "HTML, CSS, JavaScript", "Belajar membuat halaman web responsif dan interaktif dari awal.", R.drawable.img_ai));
-        listMataPelajaran.add(new MataPelajaran("Backend dan API", "REST API, JSON, Server", "Pahami cara aplikasi berkomunikasi dengan server dan database.", R.drawable.img_basisdata));
-        listMataPelajaran.add(new MataPelajaran("Basis Data", "SQL, ERD, Relasi", "Rancang database, relasi tabel, dan query untuk kebutuhan aplikasi.", R.drawable.img_basisdata));
-        listMataPelajaran.add(new MataPelajaran("Jaringan Komputer", "TCP/IP, OSI, Routing", "Pelajari pondasi jaringan, alamat IP, protokol, dan keamanan dasar.", R.drawable.img_jaringan));
-        listMataPelajaran.add(new MataPelajaran("Git dan GitHub", "Version Control", "Kelola perubahan kode, branch, commit, dan kolaborasi project.", R.drawable.img_mobile));
-        listMataPelajaran.add(new MataPelajaran("Kecerdasan Buatan", "AI, Machine Learning", "Kenali konsep AI modern dan penerapan sederhana dalam aplikasi.", R.drawable.img_ai));
+        listMataPelajaran.add(new MataPelajaran("Pemrograman Mobile", "Android, Activity, UI XML", "Bangun aplikasi Android dari layout, intent, list, hingga navigasi.", R.drawable.pemrograman_mobile));
+        listMataPelajaran.add(new MataPelajaran("Dasar Pemrograman", "Algoritma, Java, OOP", "Mulai dari logika dasar, struktur data sederhana, dan konsep OOP.", R.drawable.dasar_pemrograman));
+        listMataPelajaran.add(new MataPelajaran("Website Development", "HTML, CSS, JavaScript", "Belajar membuat halaman web responsif dan interaktif dari awal.", R.drawable.website_development));
+        listMataPelajaran.add(new MataPelajaran("Backend dan API", "REST API, JSON, Server", "Pahami cara aplikasi berkomunikasi dengan server dan database.", R.drawable.backend_dan_api));
+        listMataPelajaran.add(new MataPelajaran("Basis Data", "SQL, ERD, Relasi", "Rancang database, relasi tabel, dan query untuk kebutuhan aplikasi.", R.drawable.basis_data));
+        listMataPelajaran.add(new MataPelajaran("Jaringan Komputer", "TCP/IP, OSI, Routing", "Pelajari pondasi jaringan, alamat IP, protokol, dan keamanan dasar.", R.drawable.jaringan_komputer));
+        listMataPelajaran.add(new MataPelajaran("Git dan GitHub", "Version Control", "Kelola perubahan kode, branch, commit, dan kolaborasi project.", R.drawable.github));
+        listMataPelajaran.add(new MataPelajaran("Kecerdasan Buatan", "AI, Machine Learning", "Kenali konsep AI modern dan penerapan sederhana dalam aplikasi.", R.drawable.kecerdasan_buatan));
     }
 }

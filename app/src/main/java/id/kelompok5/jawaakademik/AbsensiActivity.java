@@ -51,17 +51,12 @@ public class AbsensiActivity extends AppCompatActivity {
                 if (itemId == R.id.navigation_beranda) {
                     startActivity(new android.content.Intent(getApplicationContext(), DashboardActivity.class));
                     overridePendingTransition(0, 0);
-                    finish();
                     return true;
                 } else if (itemId == R.id.navigation_kelas) {
                     return true; // Tetap di halaman terkait Kelas
-                } else if (itemId == R.id.navigation_forum) {
-                    startActivity(new android.content.Intent(getApplicationContext(), ForumActivity.class));
-                    overridePendingTransition(0, 0);
-                    finish();
-                    return true;
                 } else if (itemId == R.id.navigation_profil) {
-                    // Nanti arahkan ke Activity Profil
+                    startActivity(new android.content.Intent(getApplicationContext(), ProfileActivity.class));
+                    overridePendingTransition(0, 0);
                     return true;
                 }
                 return false;

@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Detail Diskusi"
+            android:text="Fitur Dinonaktifkan"
             android:textColor="#1a73e8"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -85,6 +85,6 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-
+    <include layout="@layout/layout_copyright" />
 
 </LinearLayout>

@@ -17,14 +17,28 @@
         android:src="@android:drawable/ic_menu_revert"
         app:tint="#1a73e8"/>
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/layoutForumTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Forum Diskusi"
-        android:textColor="#1a73e8"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="8dp"
+            app:srcCompat="@drawable/image_login" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fitur Dinonaktifkan"
+            android:textColor="#1a73e8"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/btnAddForum"
@@ -89,17 +103,7 @@
         android:paddingTop="8dp"
         android:paddingBottom="16dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Aplikasi By - Abid FJ"
-        android:textAlignment="center"
-        android:textColor="#B0BEC5"
-        android:textSize="12sp"
-        android:textStyle="italic|bold"
-        android:paddingBottom="16dp"
-        android:paddingTop="8dp"
-        android:background="@android:color/white"/>
+    <include layout="@layout/layout_copyright" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

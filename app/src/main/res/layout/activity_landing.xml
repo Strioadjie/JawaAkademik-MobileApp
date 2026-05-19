@@ -19,7 +19,7 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_button_outline"
+        android:background="@color/white"
         tools:context=".LandingActivity">
 
         <TextView
@@ -84,7 +84,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="24dp"
-            android:text="Platform Pembelajaran online yang berfokus pada pelajar untuk belajar dengan efektif, interaktif, dan fleksibel."
+            android:text="Platform Pembelajaran online yang berfokus pada pelajar untuk belajar Pemrograman dan teknologi dengan efektif, interaktif, dan fleksibel."
             android:textColor="@color/black_soft"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -263,7 +263,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="📖 \n10+ \nMateri"
+                    android:text="🎥\n10+ \nMateri Video"
                     android:textColor="@color/black_soft"
                     android:textSize="11sp" />
 
@@ -273,7 +273,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="💬 \n50+\nDiskusi"
+                    android:text="📚 \n25+\nMateri"
                     android:textColor="@color/black_soft"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -382,11 +382,25 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/bg_comment_item"
                 android:padding="12dp"
-                android:text="Abid Fadli Junaedi\nFitur-fitur di aplikasi ini lumayan lengkap, apa lagi ada forum diskusi untuk menanyakan sesuatu terkait materi disini."
+                android:text="Abid Fadli Junaedi\nFitur-fitur di aplikasi ini lumayan lengkap, materinya juga mudah dibuka untuk belajar mandiri."
                 android:textColor="@color/black_soft"
                 android:textSize="12sp" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvCopyrightLanding"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingVertical="14dp"
+            android:text="@string/app_copyright"
+            android:textColor="#9CA3AF"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutKepuasan" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
@@ -397,6 +411,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:background="@android:color/white"
+        app:headerLayout="@layout/nav_header_landing"
         app:menu="@menu/menu_landing_drawer"
         app:itemTextColor="@color/black_soft"
         app:itemIconTint="@color/gray_icon_soft" />

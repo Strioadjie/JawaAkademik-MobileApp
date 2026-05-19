@@ -1,13 +1,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/menuTentang"
-        android:icon="@android:drawable/ic_dialog_info"
-        android:title="Tentang Aplikasi" />
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/menuMulai"
+            android:icon="@drawable/ic_home"
+            android:title="Mulai Belajar" />
 
-    <item
-        android:id="@+id/menuKontak"
-        android:icon="@android:drawable/ic_dialog_email"
-        android:title="Kontak Admin" />
+        <item
+            android:id="@+id/menuTentang"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="Tentang Aplikasi" />
+
+        <item
+            android:id="@+id/menuKontak"
+            android:icon="@android:drawable/ic_dialog_email"
+            android:title="Kontak Admin" />
+
+        <item
+            android:id="@+id/menuVersi"
+            android:icon="@android:drawable/ic_menu_manage"
+            android:title="Versi Aplikasi 1.0" />
+    </group>
 
 </menu>

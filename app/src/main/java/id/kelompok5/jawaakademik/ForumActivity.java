@@ -7,23 +7,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.tabs.TabLayout;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ForumActivity extends AppCompatActivity {
 
     private RecyclerView rvForum;
     private List<Diskusi> listDiskusi;
+    private List<Diskusi> diskusiTampil;
+    private ForumAdapter adapter;
     private String discussionTopic;
     private String discussionMaterial;
     private String discussionInfo;
+    private int filterTabAktif = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,7 @@ public class ForumActivity extends AppCompatActivity {
         ImageView btnBack = findViewById(R.id.btnBack);
         ImageView btnAddForum = findViewById(R.id.btnAddForum);
         TextView tvForumContext = findViewById(R.id.tvForumContext);
+        TabLayout tabLayoutForum = findViewById(R.id.tabLayoutForum);
         rvForum = findViewById(R.id.rvForum);
 
         discussionTopic = getIntent().getStringExtra("DISCUSSION_TOPIC");
@@ -41,7 +48,7 @@ public class ForumActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> finish());
         btnAddForum.setOnClickListener(v ->
-                Toast.makeText(this, "Tambah thread akan aktif setelah database dipasang", Toast.LENGTH_SHORT).show()
+                AppToast.show(this, "Fitur forum dinonaktifkan")
         );
 
         listDiskusi = siapkanDataDiskusi();
@@ -53,21 +60,68 @@ public class ForumActivity extends AppCompatActivity {
         }
 
         rvForum.setLayoutManager(new LinearLayoutManager(this));
-        rvForum.setAdapter(new ForumAdapter(listDiskusi));
+        diskusiTampil = new ArrayList<>();
+        adapter = new ForumAdapter(diskusiTampil);
+        rvForum.setAdapter(adapter);
+        filterDiskusi();
+
+        tabLayoutForum.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                filterTabAktif = tab.getPosition();
+                filterDiskusi();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+        });
 
         setupBottomNavigation();
     }
 
+    private void filterDiskusi() {
+        diskusiTampil.clear();
+        for (Diskusi diskusi : listDiskusi) {
+            if (filterTabAktif == 1 && diskusi.sudahDibaca) {
+                continue;
+            }
+            if (filterTabAktif == 2 && !diskusi.milikSaya) {
+                continue;
+            }
+            diskusiTampil.add(diskusi);
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+    private Set<String> getThreadTerbaca() {
+        return getSharedPreferences("FORUM_DATA", MODE_PRIVATE)
+                .getStringSet("READ_THREADS", new HashSet<>());
+    }
+
+    private void tandaiSudahDibaca(Diskusi diskusi) {
+        Set<String> threadTerbaca = new HashSet<>(getThreadTerbaca());
+        threadTerbaca.add(diskusi.id);
+        getSharedPreferences("FORUM_DATA", MODE_PRIVATE)
+                .edit()
+                .putStringSet("READ_THREADS", threadTerbaca)
+                .apply();
+        diskusi.sudahDibaca = true;
+        filterDiskusi();
+    }
+
     private List<Diskusi> siapkanDataDiskusi() {
         List<Diskusi> data = new ArrayList<>();
+        Set<String> threadTerbaca = getThreadTerbaca();
+        String username = getSharedPreferences("USER_DATA", MODE_PRIVATE)
+                .getString("USERNAME", "Pelajar");
+        if (username == null || username.trim().isEmpty()) {
+            username = "Pelajar";
+        }
 
         if (discussionMaterial != null && !discussionMaterial.trim().isEmpty()) {
-            String username = getSharedPreferences("USER_DATA", MODE_PRIVATE)
-                    .getString("USERNAME", "Pelajar");
-            if (username == null || username.trim().isEmpty()) {
-                username = "Pelajar";
-            }
-
             data.add(new Diskusi(
                     "Diskusi: " + discussionMaterial,
                     username,
@@ -75,7 +129,9 @@ public class ForumActivity extends AppCompatActivity {
                     "0",
                     "Gunakan thread ini untuk membahas materi " + discussionMaterial + ". Tulis pertanyaan, error, rangkuman, atau contoh latihan yang ingin didiskusikan.",
                     discussionTopic,
-                    discussionMaterial
+                    discussionMaterial,
+                    true,
+                    false
             ));
             data.add(new Diskusi(
                     "Ada yang sudah mencoba materi ini?",
@@ -84,7 +140,9 @@ public class ForumActivity extends AppCompatActivity {
                     "4",
                     "Saya ingin membandingkan catatan belajar dan contoh latihan dari materi ini.",
                     discussionTopic,
-                    discussionMaterial
+                    discussionMaterial,
+                    false,
+                    false
             ));
             data.add(new Diskusi(
                     "Bagian tersulit dari " + discussionMaterial,
@@ -93,15 +151,24 @@ public class ForumActivity extends AppCompatActivity {
                     "2",
                     "Saya masih perlu contoh langkah demi langkah supaya konsepnya lebih kebayang.",
                     discussionTopic,
-                    discussionMaterial
+                    discussionMaterial,
+                    false,
+                    false
             ));
+            for (Diskusi diskusi : data) {
+                diskusi.sudahDibaca = threadTerbaca.contains(diskusi.id);
+            }
             return data;
         }
 
-        data.add(new Diskusi("Thread Website Development", "Andi Saputra", "2 jam lalu", "6", "Diskusi umum seputar HTML, CSS, JavaScript, dan struktur website.", "Website Development", "Website Development"));
-        data.add(new Diskusi("Thread Pemrograman Mobile", "Siti Aisyah", "5 jam lalu", "4", "Tempat bertanya seputar Android, Activity, Intent, dan UI XML.", "Pemrograman Mobile", "Pemrograman Mobile"));
-        data.add(new Diskusi("Thread Backend dan API", "Dimas Pratama", "1 hari lalu", "5", "Bahas REST API, JSON, request-response, dan koneksi aplikasi ke server.", "Backend dan API", "Backend dan API"));
-        data.add(new Diskusi("Thread Jaringan Komputer", "Rina Kartika", "2 hari lalu", "3", "Diskusi OSI layer, IP address, subnetting, dan simulasi jaringan.", "Jaringan Komputer", "Jaringan Komputer"));
+        data.add(new Diskusi("Thread Website Development", "Andi Saputra", "2 jam lalu", "6", "Diskusi umum seputar HTML, CSS, JavaScript, dan struktur website.", "Website Development", "Website Development", false, false));
+        data.add(new Diskusi("Thread Pemrograman Mobile", "Siti Aisyah", "5 jam lalu", "4", "Tempat bertanya seputar Android, Activity, Intent, dan UI XML.", "Pemrograman Mobile", "Pemrograman Mobile", false, false));
+        data.add(new Diskusi("Thread Backend dan API", "Dimas Pratama", "1 hari lalu", "5", "Bahas REST API, JSON, request-response, dan koneksi aplikasi ke server.", "Backend dan API", "Backend dan API", false, false));
+        data.add(new Diskusi("Thread Jaringan Komputer", "Rina Kartika", "2 hari lalu", "3", "Diskusi OSI layer, IP address, subnetting, dan simulasi jaringan.", "Jaringan Komputer", "Jaringan Komputer", false, false));
+        data.add(new Diskusi("Pertanyaan Saya: Cara mulai belajar coding?", username, "baru saja", "0", "Saya ingin tahu urutan belajar yang paling cocok untuk pemula.", "Dasar Pemrograman", "Dasar Pemrograman", true, false));
+        for (Diskusi diskusi : data) {
+            diskusi.sudahDibaca = threadTerbaca.contains(diskusi.id);
+        }
         return data;
     }
 
@@ -117,19 +184,16 @@ public class ForumActivity extends AppCompatActivity {
                 if (itemId == R.id.navigation_beranda) {
                     startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                     overridePendingTransition(0, 0);
-                    finish();
                     return true;
                 } else if (itemId == R.id.navigation_kelas) {
                     startActivity(new Intent(getApplicationContext(), MateriActivity.class));
                     overridePendingTransition(0, 0);
-                    finish();
                     return true;
                 } else if (itemId == R.id.navigation_forum) {
                     return true;
                 } else if (itemId == R.id.navigation_profil) {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                     overridePendingTransition(0, 0);
-                    finish();
                     return true;
                 }
                 return false;
@@ -139,8 +203,10 @@ public class ForumActivity extends AppCompatActivity {
 
     private static class Diskusi {
         String judul, penulis, waktu, jmlBalasan, isi, topik, materi;
+        String id;
+        boolean milikSaya, sudahDibaca;
 
-        Diskusi(String judul, String penulis, String waktu, String jmlBalasan, String isi, String topik, String materi) {
+        Diskusi(String judul, String penulis, String waktu, String jmlBalasan, String isi, String topik, String materi, boolean milikSaya, boolean sudahDibaca) {
             this.judul = judul;
             this.penulis = penulis;
             this.waktu = waktu;
@@ -148,6 +214,9 @@ public class ForumActivity extends AppCompatActivity {
             this.isi = isi;
             this.topik = topik == null || topik.trim().isEmpty() ? "Umum" : topik;
             this.materi = materi == null || materi.trim().isEmpty() ? "Forum Umum" : materi;
+            this.milikSaya = milikSaya;
+            this.sudahDibaca = sudahDibaca;
+            this.id = this.materi + "|" + this.judul;
         }
     }
 
@@ -171,8 +240,11 @@ public class ForumActivity extends AppCompatActivity {
             holder.tvJudulForum.setText(diskusi.judul);
             holder.tvInfoForum.setText(diskusi.penulis + " - " + diskusi.waktu + " - " + diskusi.topik);
             holder.tvJmlBalasan.setText(diskusi.jmlBalasan);
+            holder.tvJudulForum.setAlpha(diskusi.sudahDibaca ? 0.65f : 1f);
+            holder.tvInfoForum.setAlpha(diskusi.sudahDibaca ? 0.65f : 1f);
 
             holder.itemView.setOnClickListener(v -> {
+                tandaiSudahDibaca(diskusi);
                 Intent intent = new Intent(ForumActivity.this, DetailForumActivity.class);
                 intent.putExtra("THREAD_TITLE", diskusi.judul);
                 intent.putExtra("THREAD_BODY", diskusi.isi);

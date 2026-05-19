@@ -22,7 +22,6 @@ import java.util.List;
 public class MateriActivity extends AppCompatActivity {
 
     private static final int TIPE_SEMUA = 3;
-    private static final int TIPE_PDF = 0;
     private static final int TIPE_WEB = 1;
     private static final int TIPE_VIDEO = 2;
 
@@ -68,7 +67,6 @@ public class MateriActivity extends AppCompatActivity {
         PopupMenu popupMenu = new PopupMenu(this, anchor);
         Menu menu = popupMenu.getMenu();
         menu.add(Menu.NONE, TIPE_SEMUA, Menu.NONE, "Semua");
-        menu.add(Menu.NONE, TIPE_PDF, Menu.NONE, "PDF");
         menu.add(Menu.NONE, TIPE_WEB, Menu.NONE, "Web");
         menu.add(Menu.NONE, TIPE_VIDEO, Menu.NONE, "Video");
 
@@ -96,7 +94,6 @@ public class MateriActivity extends AppCompatActivity {
     }
 
     private String getFilterText(int tipe) {
-        if (tipe == TIPE_PDF) return "PDF";
         if (tipe == TIPE_WEB) return "Web";
         if (tipe == TIPE_VIDEO) return "Video";
         return "Semua";
@@ -111,19 +108,12 @@ public class MateriActivity extends AppCompatActivity {
                 if (itemId == R.id.navigation_beranda) {
                     startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                     overridePendingTransition(0, 0);
-                    finish();
                     return true;
                 } else if (itemId == R.id.navigation_kelas) {
-                    return true;
-                } else if (itemId == R.id.navigation_forum) {
-                    startActivity(new Intent(getApplicationContext(), ForumActivity.class));
-                    overridePendingTransition(0, 0);
-                    finish();
                     return true;
                 } else if (itemId == R.id.navigation_profil) {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                     overridePendingTransition(0, 0);
-                    finish();
                     return true;
                 }
                 return false;
@@ -134,41 +124,37 @@ public class MateriActivity extends AppCompatActivity {
     private void siapkanDataMateri() {
         semuaMateri = new ArrayList<>();
 
-        tambah("Pemrograman Mobile", "Pengantar Android dan Android Studio", "Web - Developer Android", TIPE_WEB, R.drawable.img_mobile, "https://developer.android.com/courses");
-        tambah("Pemrograman Mobile", "Membuat UI Android dengan XML", "PDF - Modul layout Android", TIPE_PDF, R.drawable.img_mobile, "https://developer.android.com/develop/ui/views/layout/declaring-layout");
-        tambah("Pemrograman Mobile", "Intent, Activity, dan Navigasi", "Web - Dokumentasi Android", TIPE_WEB, R.drawable.img_mobile, "https://developer.android.com/guide/components/intents-filters");
-        tambah("Pemrograman Mobile", "RecyclerView untuk Daftar Data", "Video - YouTube", TIPE_VIDEO, R.drawable.img_mobile, "https://www.youtube.com/results?search_query=android+recyclerview+tutorial+bahasa+indonesia");
+        tambah("Pemrograman Mobile", "Pengantar Android dan Android Studio", "Web - Developer Android", TIPE_WEB, R.drawable.pemrograman_mobile, "https://developer.android.com/studio/intro?hl=id");
+        tambah("Pemrograman Mobile", "Membuat UI Android dengan XML", "Web - Dokumentasi Android", TIPE_WEB, R.drawable.pemrograman_mobile, "https://developer.android.com/codelabs/basic-android-kotlin-training-xml-layouts?hl=id#0");
+        tambah("Pemrograman Mobile", "RecyclerView untuk Daftar Data", "Video - YouTube", TIPE_VIDEO, R.drawable.pemrograman_mobile, "https://youtu.be/TAEbP_ccjsk?si=mMyHaDpc4S64EHAM");
 
-        tambah("Dasar Pemrograman", "Algoritma dan Flowchart", "Web - Dasar coding", TIPE_WEB, R.drawable.image_student, "https://www.freecodecamp.org/news/what-is-an-algorithm-definition-for-beginners/");
-        tambah("Dasar Pemrograman", "Variabel, Tipe Data, dan Kondisi", "PDF - Modul Java dasar", TIPE_PDF, R.drawable.image_student, "https://dev.java/learn/");
-        tambah("Dasar Pemrograman", "Object Oriented Programming", "Web - Java OOP", TIPE_WEB, R.drawable.image_student, "https://dev.java/learn/oop/");
-        tambah("Dasar Pemrograman", "Latihan Java untuk Pemula", "Video - YouTube", TIPE_VIDEO, R.drawable.image_student, "https://www.youtube.com/results?search_query=java+programming+for+beginners+bahasa+indonesia");
+        tambah("Dasar Pemrograman", "Algoritma dan Flowchart", "Web - Dasar coding", TIPE_WEB, R.drawable.dasar_pemrograman, "https://binus.ac.id/malang/2024/02/5-contoh-algoritma-pemrograman-dilengkapi-dengan-flowchart/");
+        tambah("Dasar Pemrograman", "Object Oriented Programming", "Web - Java OOP", TIPE_WEB, R.drawable.dasar_pemrograman, "https://www.codepolitan.com/blog/apa-itu-object-oriented-programming-oop-pengertian-dan-contohnya/");
+        tambah("Dasar Pemrograman", "Latihan Java untuk Pemula", "Video - YouTube", TIPE_VIDEO, R.drawable.dasar_pemrograman, "https://www.youtube.com/watch?v=uHyfQV0kbgo&list=PLZS-MHyEIRo51w0Hmqi0C8h2KWNzDfo6F");
 
-        tambah("Website Development", "HTML untuk Struktur Halaman", "Web - MDN", TIPE_WEB, R.drawable.img_ai, "https://developer.mozilla.org/en-US/docs/Learn/HTML");
-        tambah("Website Development", "CSS Layout dan Responsive Design", "PDF - Modul CSS", TIPE_PDF, R.drawable.img_ai, "https://developer.mozilla.org/en-US/docs/Learn/CSS");
-        tambah("Website Development", "JavaScript DOM Dasar", "Web - MDN", TIPE_WEB, R.drawable.img_ai, "https://developer.mozilla.org/en-US/docs/Learn/JavaScript");
-        tambah("Website Development", "Membuat Website Portfolio", "Video - YouTube", TIPE_VIDEO, R.drawable.img_ai, "https://www.youtube.com/results?search_query=membuat+website+portfolio+html+css+javascript");
+        tambah("Website Development", "HTML untuk Struktur Halaman", "Web - MDN", TIPE_WEB, R.drawable.website_development, "https://www.jagoanhosting.com/blog/struktur-html/");
+        tambah("Website Development", "JavaScript DOM Dasar", "Web - MDN", TIPE_WEB, R.drawable.website_development, "https://www.petanikode.com/javascript-dom/");
+        tambah("Website Development", "Membuat Website Portfolio", "Video - YouTube", TIPE_VIDEO, R.drawable.website_development, "https://youtu.be/LkR-9Z1sle8?si=C1f1ru6ZtCS5jEKA");
 
-        tambah("Backend dan API", "Konsep REST API dan JSON", "Web - MDN", TIPE_WEB, R.drawable.img_basisdata, "https://developer.mozilla.org/en-US/docs/Glossary/REST");
-        tambah("Backend dan API", "HTTP Method dan Status Code", "PDF - Modul HTTP", TIPE_PDF, R.drawable.img_basisdata, "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods");
-        tambah("Backend dan API", "Membuat API Sederhana", "Video - YouTube", TIPE_VIDEO, R.drawable.img_basisdata, "https://www.youtube.com/results?search_query=membuat+rest+api+pemula+bahasa+indonesia");
+        tambah("Backend dan API", "Konsep REST API dan JSON", "Web - MDN", TIPE_WEB, R.drawable.backend_dan_api, "https://terapan-ti.vokasi.unesa.ac.id/post/api-rest-dan-json-konsep-dasar-yang-wajib-dikuasai-developer");
+        tambah("Backend dan API", "HTTP Method dan Status Code", "Web - MDN", TIPE_WEB, R.drawable.backend_dan_api, "https://www.hostinger.com/id/tutorial/http-status-code");
+        tambah("Backend dan API", "Membuat API Sederhana", "Video - YouTube", TIPE_VIDEO, R.drawable.backend_dan_api, "https://www.youtube.com/watch?v=vQJJ_K1JbEA&list=PLFIM0718LjIW7AsIbnhFg15t9yx4H-sQ0");
 
-        tambah("Basis Data", "Konsep Database dan ERD", "Web - Database design", TIPE_WEB, R.drawable.img_basisdata, "https://www.lucidchart.com/pages/er-diagrams");
-        tambah("Basis Data", "SQL SELECT, INSERT, UPDATE, DELETE", "PDF - Modul SQL", TIPE_PDF, R.drawable.img_basisdata, "https://www.w3schools.com/sql/");
-        tambah("Basis Data", "Normalisasi Database", "Web - Relasi tabel", TIPE_WEB, R.drawable.img_basisdata, "https://www.geeksforgeeks.org/dbms/normal-forms-in-dbms/");
-        tambah("Basis Data", "Belajar SQL dari Nol", "Video - YouTube", TIPE_VIDEO, R.drawable.img_basisdata, "https://www.youtube.com/results?search_query=belajar+sql+dari+nol+bahasa+indonesia");
+        tambah("Basis Data", "Konsep Database dan ERD", "Web - Database design", TIPE_WEB, R.drawable.basis_data, "https://www.dicoding.com/blog/memahami-erd/");
+        tambah("Basis Data", "Normalisasi Database", "Web - Relasi tabel", TIPE_WEB, R.drawable.basis_data, "https://www.ibm.com/id-id/think/topics/database-normalization");
+        tambah("Basis Data", "Belajar SQL dari Nol", "Video - YouTube", TIPE_VIDEO, R.drawable.basis_data, "https://www.youtube.com/watch?v=OfrTiLzHv3g&list=PLTbTZ9z52SzMi5EmUGqVceaIVGuk426on");
 
-        tambah("Jaringan Komputer", "Pengenalan OSI Layer", "Web - Network basics", TIPE_WEB, R.drawable.img_jaringan, "https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/");
-        tambah("Jaringan Komputer", "IP Address dan Subnetting", "PDF - Modul subnetting", TIPE_PDF, R.drawable.img_jaringan, "https://www.cloudflare.com/learning/network-layer/what-is-an-ip-address/");
-        tambah("Jaringan Komputer", "Simulasi Cisco Packet Tracer", "Video - YouTube", TIPE_VIDEO, R.drawable.img_jaringan, "https://www.youtube.com/results?search_query=cisco+packet+tracer+dasar+bahasa+indonesia");
+        tambah("Jaringan Komputer", "Pengenalan OSI Layer", "Web - Network basics", TIPE_WEB, R.drawable.jaringan_komputer, "https://codingstudio.id/blog/osi-layer-adalah/");
+        tambah("Jaringan Komputer", "IP Address dan Subnetting", "Web - Network basics", TIPE_WEB, R.drawable.jaringan_komputer, "https://www.idn.id/ipv4/");
+        tambah("Jaringan Komputer", "Simulasi Cisco Packet Tracer", "Video - YouTube", TIPE_VIDEO, R.drawable.jaringan_komputer, "https://youtu.be/CAWjdVqXd1I?si=ee1qjwAEdUkbVXuB");
 
-        tambah("Git dan GitHub", "Git Dasar: Commit, Branch, Merge", "Web - GitHub Docs", TIPE_WEB, R.drawable.img_mobile, "https://docs.github.com/en/get-started/using-git/about-git");
-        tambah("Git dan GitHub", "Kolaborasi Project di GitHub", "PDF - Modul GitHub", TIPE_PDF, R.drawable.img_mobile, "https://docs.github.com/en/get-started/start-your-journey");
-        tambah("Git dan GitHub", "Belajar Git dan GitHub", "Video - YouTube", TIPE_VIDEO, R.drawable.img_mobile, "https://www.youtube.com/results?search_query=belajar+git+github+bahasa+indonesia");
+        tambah("Git dan GitHub", "Git Dasar: Commit, Branch, Merge", "Web - GitHub Docs", TIPE_WEB, R.drawable.github, "https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging");
+        tambah("Git dan GitHub", "Kolaborasi Project di GitHub", "Web - GitHub Docs", TIPE_WEB, R.drawable.github, "https://www.dicoding.com/blog/cara-berkolaborasi-di-repositori-github/");
+        tambah("Git dan GitHub", "Belajar Git dan GitHub", "Video - YouTube", TIPE_VIDEO, R.drawable.github, "https://www.youtube.com/watch?v=lTMZxWMjXQU&list=PLFIM0718LjIVknj6sgsSceMqlq242-jNf");
 
-        tambah("Kecerdasan Buatan", "Apa Itu Artificial Intelligence", "Web - Google AI", TIPE_WEB, R.drawable.img_ai, "https://ai.google/responsibility/");
-        tambah("Kecerdasan Buatan", "Konsep Machine Learning", "PDF - Modul ML", TIPE_PDF, R.drawable.img_ai, "https://developers.google.com/machine-learning/crash-course");
-        tambah("Kecerdasan Buatan", "Machine Learning untuk Pemula", "Video - YouTube", TIPE_VIDEO, R.drawable.img_ai, "https://www.youtube.com/results?search_query=machine+learning+untuk+pemula+bahasa+indonesia");
+        tambah("Kecerdasan Buatan", "Apa Itu Artificial Intelligence", "Web - Google AI", TIPE_WEB, R.drawable.kecerdasan_buatan, "https://www.ruangguru.com/blog/apa-itu-artificial-intelligence");
+        tambah("Kecerdasan Buatan", "Konsep Machine Learning", "Web - Google ML", TIPE_WEB, R.drawable.kecerdasan_buatan, "https://www.dicoding.com/blog/machine-learning-adalah/");
+        tambah("Kecerdasan Buatan", "Machine Learning untuk Pemula", "Video - YouTube", TIPE_VIDEO, R.drawable.kecerdasan_buatan, "https://www.youtube.com/watch?v=mEwoAV5_dcA");
     }
 
     private void tambah(String topik, String judul, String info, int tipe, int gambar, String url) {
@@ -218,13 +204,6 @@ public class MateriActivity extends AppCompatActivity {
                 startActivity(intent);
             });
 
-            holder.btnDiskusiMateri.setOnClickListener(v -> {
-                Intent intent = new Intent(MateriActivity.this, ForumActivity.class);
-                intent.putExtra("DISCUSSION_TOPIC", materi.topik);
-                intent.putExtra("DISCUSSION_MATERIAL", materi.judul);
-                intent.putExtra("DISCUSSION_INFO", materi.info);
-                startActivity(intent);
-            });
         }
 
         @Override
@@ -233,7 +212,7 @@ public class MateriActivity extends AppCompatActivity {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
-            TextView judul, info, tvTipeMateri, btnDiskusiMateri;
+            TextView judul, info, tvTipeMateri;
             ImageView imgMateri;
 
             ViewHolder(View v) {
@@ -241,7 +220,6 @@ public class MateriActivity extends AppCompatActivity {
                 judul = v.findViewById(R.id.tvJudulMateri);
                 info = v.findViewById(R.id.tvInfoMateri);
                 tvTipeMateri = v.findViewById(R.id.tvTipeMateri);
-                btnDiskusiMateri = v.findViewById(R.id.btnDiskusiMateri);
                 imgMateri = v.findViewById(R.id.imgMateri);
             }
         }

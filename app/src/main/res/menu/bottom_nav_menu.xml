@@ -9,12 +9,13 @@
     <item
         android:id="@+id/navigation_kelas"
         android:icon="@drawable/ic_kelas"
-        android:title="Kelas" />
+        android:title="Materi" />
 
     <item
         android:id="@+id/navigation_forum"
         android:icon="@drawable/ic_forum"
-        android:title="Forum" />
+        android:title=""
+        android:visible="false" />
 
     <item
         android:id="@+id/navigation_profil"

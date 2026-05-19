@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +17,7 @@ public class ProfileActivity extends AppCompatActivity {
     private static final String KEY_USERNAME = "USERNAME";
 
     private TextView tvProfileName;
+    private TextView tvProfileUsernameInfo;
     private EditText edtProfileName;
     private SharedPreferences userData;
 
@@ -29,15 +29,19 @@ public class ProfileActivity extends AppCompatActivity {
         userData = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
 
         tvProfileName = findViewById(R.id.tvProfileName);
+        tvProfileUsernameInfo = findViewById(R.id.tvProfileUsernameInfo);
         edtProfileName = findViewById(R.id.edtProfileName);
         Button btnSaveProfile = findViewById(R.id.btnSaveProfile);
+        Button btnLogout = findViewById(R.id.btnLogout);
 
         String username = getSavedUsername();
         tvProfileName.setText(username);
+        tvProfileUsernameInfo.setText("Username: " + username);
         edtProfileName.setText(username);
 
         findViewById(R.id.btnBackProfile).setOnClickListener(v -> finish());
         btnSaveProfile.setOnClickListener(v -> saveUsername());
+        btnLogout.setOnClickListener(v -> logout());
         setupBottomNavigation();
     }
 
@@ -61,7 +65,24 @@ public class ProfileActivity extends AppCompatActivity {
                 .apply();
 
         tvProfileName.setText(newUsername);
-        Toast.makeText(this, "Nama profil berhasil disimpan", Toast.LENGTH_SHORT).show();
+        tvProfileUsernameInfo.setText("Username: " + newUsername);
+        AppToast.show(this, "Nama profil berhasil disimpan");
+    }
+
+    private void logout() {
+        getSharedPreferences(PREF_NAME, MODE_PRIVATE)
+                .edit()
+                .clear()
+                .apply();
+        getSharedPreferences("FORUM_DATA", MODE_PRIVATE)
+                .edit()
+                .clear()
+                .apply();
+
+        Intent intent = new Intent(ProfileActivity.this, LandingActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 
     private void setupBottomNavigation() {
@@ -74,17 +95,10 @@ public class ProfileActivity extends AppCompatActivity {
             if (itemId == R.id.navigation_beranda) {
                 startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                 overridePendingTransition(0, 0);
-                finish();
                 return true;
             } else if (itemId == R.id.navigation_kelas) {
                 startActivity(new Intent(getApplicationContext(), MateriActivity.class));
                 overridePendingTransition(0, 0);
-                finish();
-                return true;
-            } else if (itemId == R.id.navigation_forum) {
-                startActivity(new Intent(getApplicationContext(), ForumActivity.class));
-                overridePendingTransition(0, 0);
-                finish();
                 return true;
             } else if (itemId == R.id.navigation_profil) {
                 return true;

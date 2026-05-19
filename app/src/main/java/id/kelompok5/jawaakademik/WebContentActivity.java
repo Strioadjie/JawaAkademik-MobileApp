@@ -8,7 +8,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -53,7 +52,7 @@ public class WebContentActivity extends AppCompatActivity {
         });
 
         if (url == null || url.isEmpty()) {
-            Toast.makeText(this, "Link materi belum tersedia", Toast.LENGTH_SHORT).show();
+            AppToast.show(this, "Link materi belum tersedia");
         } else {
             webView.loadUrl(url);
         }

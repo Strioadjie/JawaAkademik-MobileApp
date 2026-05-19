@@ -68,15 +68,7 @@
         android:paddingTop="8dp"
         android:paddingBottom="16dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Aplikasi By - Abid FJ"
-        android:textAlignment="center"
-        android:textColor="#B0BEC5"
-        android:textSize="12sp"
-        android:textStyle="italic|bold"
-        android:padding="16dp" />
+    <include layout="@layout/layout_copyright" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
