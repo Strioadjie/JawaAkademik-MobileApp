@@ -63,6 +63,18 @@
             android:text="Saya" />
     </com.google.android.material.tabs.TabLayout>
 
+    <TextView
+        android:id="@+id/tvForumContext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F8F9FA"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:text="Thread materi"
+        android:textColor="#5F6368"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -74,7 +86,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:clipToPadding="false"
-        android:paddingTop="8dp" />
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -94,9 +107,9 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
+        style="@style/Widget_JawaAkademik_BottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:layout_height="72dp"
         app:menu="@menu/bottom_nav_menu" />
 
 </LinearLayout>

@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:paddingHorizontal="20dp">
+
         <ImageView
             android:id="@+id/btnBackMateri"
             android:layout_width="24dp"
@@ -17,7 +18,9 @@
             android:layout_centerVertical="true"
             android:src="@android:drawable/ic_menu_revert"
             app:tint="#1a73e8"/>
+
         <TextView
+            android:id="@+id/tvMateriTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -25,34 +28,58 @@
             android:textColor="#1a73e8"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btnFilterMateri"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Filter materi"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            app:tint="#1a73e8" />
     </RelativeLayout>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayoutMateri"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabIndicatorColor="#1a73e8"
-        app:tabSelectedTextColor="#1a73e8"
-        app:tabTextColor="#5F6368"
-        app:tabMode="fixed">
-        <com.google.android.material.tabs.TabItem android:text="Semua" />
-        <com.google.android.material.tabs.TabItem android:text="PDF" />
-        <com.google.android.material.tabs.TabItem android:text="Web" />
-        <com.google.android.material.tabs.TabItem android:text="Video" />
-    </com.google.android.material.tabs.TabLayout>
+        android:layout_height="44dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:background="@android:color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Filter:"
+            android:textColor="#5F6368"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvFilterLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="Semua"
+            android:textColor="#1a73e8"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMateri"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="8dp"/>
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
+        style="@style/Widget_JawaAkademik_BottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:layout_height="72dp"
         app:menu="@menu/bottom_nav_menu" />
 
 </LinearLayout>

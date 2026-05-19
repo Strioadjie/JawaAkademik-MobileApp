@@ -8,23 +8,34 @@
     android:background="@android:color/white">
 
     <ImageView
-        android:id="@+id/imgTipeMateri"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:src="@android:drawable/ic_menu_help"
+        android:id="@+id/imgMateri"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:background="@color/gray_light"
+        android:padding="6dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_mobile"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/layoutInfoMateri"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginStart="16dp"
-        app:layout_constraintStart_toEndOf="@id/imgTipeMateri"
+        app:layout_constraintStart_toEndOf="@id/imgMateri"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvTipeMateri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Web"
+            android:textColor="@color/blue_primary"
+            android:textSize="11sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvJudulMateri"
@@ -45,11 +56,28 @@
             android:textSize="12sp" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/btnDiskusiMateri"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_button_outline"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:paddingHorizontal="14dp"
+        android:text="Diskusi materi ini"
+        android:textColor="@color/blue_primary"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/layoutInfoMateri"
+        app:layout_constraintTop_toBottomOf="@id/layoutInfoMateri" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:background="#F1F3F4"
-        app:layout_constraintTop_toBottomOf="@id/imgTipeMateri" />
+        app:layout_constraintTop_toBottomOf="@id/btnDiskusiMateri" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

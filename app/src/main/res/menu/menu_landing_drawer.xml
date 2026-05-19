@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuTentang"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="Tentang Aplikasi" />
+
+    <item
+        android:id="@+id/menuKontak"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="Kontak Admin" />
+
+</menu>

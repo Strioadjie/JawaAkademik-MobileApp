@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/txtBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← Kembali"
+            android:textColor="@color/blue_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="174dp"
+            android:layout_height="99dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/image_login" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:text="Jawa Akademik"
+            android:textColor="@color/blue_primary"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Aplikasi E-Learning Mobile"
+            android:textColor="@color/black_soft"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="Tentang Aplikasi"
+            android:textColor="@color/black_soft"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Jawa Akademik adalah aplikasi pembelajaran online berbasis mobile yang dibuat untuk memenuhi tugas mata kuliah Mobile Programming. Aplikasi ini dirancang untuk membantu pengguna dalam mengakses materi pembelajaran, video pembelajaran, forum diskusi, dan absensi secara lebih mudah dan terstruktur."
+            android:textColor="@color/gray_text"
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="Tujuan Aplikasi"
+            android:textColor="@color/black_soft"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Tujuan dibuatnya aplikasi ini adalah untuk menyediakan media pembelajaran online yang mudah digunakan, menarik, dan dapat membantu mahasiswa dalam mengikuti proses pembelajaran secara digital."
+            android:textColor="@color/gray_text"
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="Dibuat Oleh"
+            android:textColor="@color/black_soft"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Kelompok 5\nMahasiswa Teknik Informatika\nUniversitas Pamulang\nSemester 6"
+            android:textColor="@color/gray_text"
+            android:textSize="14sp"
+            android:lineSpacingExtra="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="Anggota Kelompok"
+            android:textColor="@color/black_soft"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtAnggota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="5dp"
+            android:text="1. Satrio Adjie\n2. Sofyan Agung\n3. Abid Fadli Junaedi"
+            android:textColor="@color/gray_text"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</ScrollView>

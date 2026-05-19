@@ -1,6 +1,8 @@
 package id.kelompok5.jawaakademik;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -33,6 +35,10 @@ public class DetailMatkulActivity extends AppCompatActivity {
         pbProgressDetail = findViewById(R.id.pbProgressDetail);
         btnBack = findViewById(R.id.btnBack);
         btnMulai = findViewById(R.id.btnMulai);
+
+        findViewById(R.id.tvLabelProgress).setVisibility(View.GONE);
+        tvProgressPercent.setVisibility(View.GONE);
+        pbProgressDetail.setVisibility(View.GONE);
 
         // Mengekstrak parameter data yang dikirimkan oleh Adapter Layar 3
         String namaMatkul = getIntent().getStringExtra("NAMA_MATKUL");
@@ -77,6 +83,12 @@ public class DetailMatkulActivity extends AppCompatActivity {
             // Metode finish() membuang Activity ini dari tumpukan memori (backstack)
             // sehingga otomatis menampilkan kembali halaman Dashboard yang berada di bawahnya
             finish();
+        });
+
+        btnMulai.setOnClickListener(v -> {
+            Intent intent = new Intent(DetailMatkulActivity.this, MateriActivity.class);
+            intent.putExtra("TOPIK_BELAJAR", tvDetailTitle.getText().toString());
+            startActivity(intent);
         });
     }
 }

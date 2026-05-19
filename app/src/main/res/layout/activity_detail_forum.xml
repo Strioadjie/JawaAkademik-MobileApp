@@ -53,6 +53,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvDetailIsi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -68,6 +69,7 @@
                 android:background="#F8F9FA" />
 
             <TextView
+                android:id="@+id/tvJumlahBalasan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"

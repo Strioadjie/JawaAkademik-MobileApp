@@ -3,20 +3,18 @@ package id.kelompok5.jawaakademik;
 public class MataPelajaran {
     private String namaMatkul;
     private String detailJadwal;
-    private String progressBelajar;
-    // Variabel baru untuk menyimpan alamat gambar (bertipe int karena ID di Android adalah angka)
+    private String deskripsi;
     private int gambarMatkul;
 
-    // Constructor diperbarui untuk menerima gambar
-    public MataPelajaran(String namaMatkul, String detailJadwal, String progressBelajar, int gambarMatkul) {
+    public MataPelajaran(String namaMatkul, String detailJadwal, String deskripsi, int gambarMatkul) {
         this.namaMatkul = namaMatkul;
         this.detailJadwal = detailJadwal;
-        this.progressBelajar = progressBelajar;
+        this.deskripsi = deskripsi;
         this.gambarMatkul = gambarMatkul;
     }
 
     public String getNamaMatkul() { return namaMatkul; }
     public String getDetailJadwal() { return detailJadwal; }
-    public String getProgressBelajar() { return progressBelajar; }
-    public int getGambarMatkul() { return gambarMatkul; } // Getter baru untuk gambar
+    public String getDeskripsi() { return deskripsi; }
+    public int getGambarMatkul() { return gambarMatkul; }
 }

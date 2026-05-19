@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LandingActivity">
+
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -48,6 +56,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:text="☰"
+            android:textColor="@color/black_soft"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -169,6 +178,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="💼\nGratis &amp;\nTerjangkau"
+                    android:textColor="@color/black_soft"
                     android:textSize="11sp" />
 
                 <TextView
@@ -178,6 +188,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="⏰ \nAkses\nKapan Saja"
+                    android:textColor="@color/black_soft"
                     android:textSize="11sp" />
 
                 <TextView
@@ -187,6 +198,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="💡\nBelajar\nLebih Mudah"
+                    android:textColor="@color/black_soft"
                     android:textSize="11sp" />
 
                 <TextView
@@ -196,6 +208,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="👥\nKomunitas\nAktif"
+                    android:textColor="@color/black_soft"
                     android:textSize="11sp" />
 
             </LinearLayout>
@@ -241,6 +254,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="👤\n100+\nSiswa Aktif"
+                    android:textColor="@color/black_soft"
                     android:textSize="11sp" />
 
                 <TextView
@@ -250,6 +264,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="📖 \n10+ \nMateri"
+                    android:textColor="@color/black_soft"
                     android:textSize="11sp" />
 
                 <TextView
@@ -259,6 +274,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="💬 \n50+\nDiskusi"
+                    android:textColor="@color/black_soft"
                     android:textSize="11sp" />
             </LinearLayout>
         </LinearLayout>
@@ -374,3 +390,14 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="@android:color/white"
+        app:menu="@menu/menu_landing_drawer"
+        app:itemTextColor="@color/black_soft"
+        app:itemIconTint="@color/gray_icon_soft" />
+</androidx.drawerlayout.widget.DrawerLayout>

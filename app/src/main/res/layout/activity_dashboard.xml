@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/schemas/tools"
+    xmlns:tools2="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -13,18 +13,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue_primary"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="24dp"
-        android:gravity="center_vertical"
         app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBackDashboard"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@android:drawable/ic_menu_revert"
+            app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/ivProfile"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@mipmap/ic_launcher_round"
-            android:background="@drawable/bg_card_white"
-            android:padding="2dp" />
+            android:background="@drawable/bg_testimoni_blue"
+            android:padding="2dp"
+            android:src="@drawable/img_iconprofile" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,7 +46,7 @@
                 android:id="@+id/tvWelcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Halo, Mahasiswa!"
+                android:text="Halo, Cikidawg"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -45,7 +55,7 @@
                 android:id="@+id/tvNim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NIM 12233123"
+                android:text="Semangat Belajarnya!!!"
                 android:textColor="@color/gray_light"
                 android:textSize="13sp" />
         </LinearLayout>
@@ -57,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Mata Pelajaran Anda"
+        android:text="Pilih Topik Belajar"
         android:textColor="@color/black_soft"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -66,13 +76,15 @@
 
     <TextView
         android:id="@+id/tvSemester"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginTop="4dp"
-        android:text="Semester Genap 2025/2026"
+        android:text="Belajar coding, website, mobile app, jaringan, database, dan topik teknologi lainnya."
         android:textColor="@color/gray_text"
         android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitleMatkul" />
 
@@ -84,21 +96,19 @@
         android:clipToPadding="false"
         android:paddingHorizontal="16dp"
         android:paddingBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
         app:layout_constraintTop_toBottomOf="@id/tvSemester"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation" />
+        app:layout_constraintVertical_bias="1.0"
+        tools2:layout_editor_absoluteX="0dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
+        style="@style/Widget_JawaAkademik_BottomNavigation"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:backgroundTint="@color/white"
-        app:itemIconTint="@color/blue_primary"
-        app:itemTextColor="@color/black_soft"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_nav_menu"
+        android:layout_height="72dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
